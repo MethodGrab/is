@@ -96,7 +96,7 @@ test( 'throws an error when no UA is available', t => {
 test( 'matches userAgents correctly', t => {
 	tests.forEach( ([ ua, method, expected ]) => {
 		const lib = Lib( ua );
-		t.is( lib[ method ](), expected, `"${ua}" should not match "is.${method}()"` );
+		t.is( lib[ method ](), expected, `"${ua}" ${expected ? 'should' : 'should not'} match "is.${method}()"` );
 		t.pass();
 	});
 });
