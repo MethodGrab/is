@@ -1,7 +1,7 @@
 'use strict';
 
 var is;
-var ua = navigator.userAgent;
+var ua;
 
 
 /**
@@ -14,9 +14,14 @@ module.exports = is = function ( userAgent ) {
 
 	if ( typeof userAgent === 'string' ) {
 		ua = userAgent;
+	} else if ( typeof navigator === 'object' && navigator.userAgent ) {
+		ua = navigator.userAgent;
+	} else {
+		throw new Error( 'A user agent is required. You must pass one to the constructor or `navigator.userAgent` must exist' );
 	}
 
 	return module.exports;
+
 };
 
 
@@ -61,6 +66,24 @@ is.iOS = function (  ) {
 
 
 /**
+ * Is the device running Safari
+ * @return {boolean} yes/no
+ */
+is.safari = function (  ) {
+	 return /Safari/.test( ua ) && !is.chrome();
+};
+
+
+/**
+ * Is the device running Chrome
+ * @return {boolean} yes/no
+ */
+is.chrome = function (  ) {
+	 return /Chrome/.test( ua );
+};
+
+
+/**
  * Is the device running IE9
  * @return {boolean} yes/no
  */
@@ -84,4 +107,13 @@ is.ie10 = function (  ) {
  */
 is.ie11 = function (  ) {
 	 return /rv:11.0/.test( ua );
+};
+
+
+/**
+* Is the device running Microsoft Edge
+* @return {boolean} yes/no
+*/
+is.edge = function (  ) {
+	return /Edge/.test( ua );
 };
