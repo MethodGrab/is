@@ -1,9 +1,10 @@
 {
+  "extends": "@methodgrab/eslint-config-standard",
+
   "env": {
     "browser": true
   },
 
   "rules": {
-    "quotes": [ 2, "single", "avoid-escape" ],
   }
 }

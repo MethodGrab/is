@@ -1,0 +1,25 @@
+{
+  "name": "@methodgrab/is",
+  "version": "0.1.0",
+  "description": "UA detection",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@methodgrab/eslint-config-standard": "^0.5.0",
+    "ava": "^0.8.0"
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MethodGrab/is.git"
+  },
+  "keywords": [],
+  "author": "MethodGrab",
+  "license": "MIT",
+  "homepage": "https://github.com/MethodGrab/is#readme"
+}
