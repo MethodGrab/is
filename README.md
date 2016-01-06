@@ -12,11 +12,11 @@ is.iOS() // `true` on iOS devices
 ```
 
 ### Custom UA
-You can pass a custom user agent when initialising the library:
+You can pass a custom user agent when initializing the library:
 
 ```js
 var is = require( 'is' )( 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36' );
-is.iOS(); // false
+is.iOS(); // `false`
 ```
 
 
@@ -52,6 +52,12 @@ Checks to see if the current device is running iOS.
 ### `is.getIosVersion`
 Returns the major & minor versions of iOS.
 
+### `is.safari`
+Checks to see if the current device is running Safari.
+
+### `is.chrome`
+Checks to see if the current device is running Chrome.
+
 ### `is.ie9`
 Checks to see if the current device is running Internet Explorer 9.
 
@@ -60,3 +66,6 @@ Checks to see if the current device is running Internet Explorer 10.
 
 ### `is.ie11`
 Checks to see if the current device is running Internet Explorer 11.
+
+### `is.edge`
+Checks to see if the current device is running Microsoft Edge.
