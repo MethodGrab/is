@@ -1,6 +1,7 @@
 # is.js
+UA detection.
+Feature detection should be used where possible but sometimes it's not enough.
 
-UA detection. Where possible feature detection should be used but when that fails, use UA hacks!
 
 ## Usage
 
@@ -8,7 +9,7 @@ UA detection. Where possible feature detection should be used but when that fail
 ```js
 var is = require( 'is' );
 
-is.iOS() // `true` on iOS devices
+is.iOS() // `true` on iOS devices, `false` elsewhere
 ```
 
 ### Custom UA
@@ -16,7 +17,7 @@ You can pass a custom user agent when initializing the library:
 
 ```js
 var is = require( 'is' )( 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36' );
-is.iOS(); // `false`
+is.iOS(); // always `false`
 ```
 
 
@@ -32,7 +33,7 @@ function iosVhFix(  ) {
 	});
 }
 
-// vh units are buggy in iOS <=7 so require a JavaScript workaround
+// vh units are buggy in iOS <8 so require a JavaScript workaround
 // https://github.com/scottjehl/Device-Bugs/issues/36
 if ( is.iOS() && is.getIosVersion().major < 8 ) {
 	// either use fallback CSS
@@ -46,6 +47,7 @@ if ( is.iOS() && is.getIosVersion().major < 8 ) {
 
 
 ## API
+
 ### `is.iOS`
 Checks to see if the current device is running iOS.
 
