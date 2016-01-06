@@ -4,12 +4,8 @@ var is;
 var ua;
 
 
-/**
- * Constructor
- * @param  {string}  userAgent Optional user agent to test against
- *                             Defaults to navigator.userAgent
- * @return {object}            API methods
- */
+// :: ( userAgent: ?string ) → module: object
+// Constructor
 module.exports = is = function ( userAgent ) {
 
 	if ( typeof userAgent === 'string' ) {
@@ -25,25 +21,23 @@ module.exports = is = function ( userAgent ) {
 };
 
 
-/**
- * Get the iOS version in use
- * Defaults to -1 for both versions if the device is not iOS
- * @return {object} version.major & version.minor
- */
+// :: () → { major: number, minor: number }
+// Get the iOS version (major & minor) from a UA.
+// Defaults to -1 for both if the device is not iOS.
 is.getIosVersion = function (  ) {
 
-	var res = {
-		major: -1,
-		minor: -1
+	var ret = {
+		major : -1,
+		minor : -1,
 	};
 
 	try {
 		var matches = ua.match( /(?:iPod|iPhone|iPad).*(?:OS) (\d+)_(\d+)\s+/ );
 
 		if ( matches ) {
-			res = {
+			ret = {
 				major: parseInt( matches[1], 10 ),
-				minor: parseInt( matches[2], 10 )
+				minor: parseInt( matches[2], 10 ),
 			};
 		}
 
@@ -51,69 +45,35 @@ is.getIosVersion = function (  ) {
 		console.error( err );
 	}
 
-	return res;
+	return ret;
 
 };
 
 
-/**
- * Is the device running iOS
- * @return {boolean} yes/no
- */
-is.iOS = function (  ) {
-	return /(iPod|iPhone|iPad)/.test( ua );
-};
+// :: [ [ methodName: string, regex: string ] ]
+// Shortcut for tests that only require a single regex to be tested
+var regexMethods = [
+	[ 'iOS', '(iPod|iPhone|iPad)' ],
+	[ 'chrome', 'Chrome' ],
+	[ 'ie9', 'MSIE 9.0' ],
+	[ 'ie10', 'MSIE 10.0' ],
+	[ 'ie11', 'rv:11.0' ],
+	[ 'edge', 'Edge' ],
+];
+
+regexMethods.forEach(function ( method ) {
+	var re = new RegExp( method[1] );
+
+	// :: () → bool
+	// Does the UA indicate that the device is `method[0]`
+	is[ method[0] ] = function (  ) {
+		return re.test( ua );
+	};
+});
 
 
-/**
- * Is the device running Safari
- * @return {boolean} yes/no
- */
+// :: () → bool
+// Does the UA indicate that the device is Safari
 is.safari = function (  ) {
 	 return /Safari/.test( ua ) && !is.chrome();
-};
-
-
-/**
- * Is the device running Chrome
- * @return {boolean} yes/no
- */
-is.chrome = function (  ) {
-	 return /Chrome/.test( ua );
-};
-
-
-/**
- * Is the device running IE9
- * @return {boolean} yes/no
- */
-is.ie9  = function (  ) {
-	 return /MSIE 9.0/.test( ua );
-};
-
-
-/**
- * Is the device running IE10
- * @return {boolean} yes/no
- */
-is.ie10 = function (  ) {
-	 return /MSIE 10.0/.test( ua );
-};
-
-
-/**
- * Is the device running IE11
- * @return {boolean} yes/no
- */
-is.ie11 = function (  ) {
-	 return /rv:11.0/.test( ua );
-};
-
-
-/**
-* Is the device running Microsoft Edge
-* @return {boolean} yes/no
-*/
-is.edge = function (  ) {
-	return /Edge/.test( ua );
 };
