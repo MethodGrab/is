@@ -48,26 +48,26 @@ if ( is.iOS() && is.getIosVersion().major < 8 ) {
 
 ## API
 
-### `is.iOS`
-Checks to see if the current device is running iOS.
-
-### `is.getIosVersion`
+### `is.getIosVersion()`
 Returns the major & minor versions of iOS.
 
-### `is.safari`
-Checks to see if the current device is running Safari.
+### `is.iOS()`
+Check if the user agent indicates that the device is iOS.
 
-### `is.chrome`
-Checks to see if the current device is running Chrome.
+### `is.safari()`
+Check if the user agent indicates that the device is Safari.
 
-### `is.ie9`
-Checks to see if the current device is running Internet Explorer 9.
+### `is.chrome()`
+Check if the user agent indicates that the device is Chrome.
 
-### `is.ie10`
-Checks to see if the current device is running Internet Explorer 10.
+### `is.ie9()`
+Check if the user agent indicates that the device is Internet Explorer 9.
 
-### `is.ie11`
-Checks to see if the current device is running Internet Explorer 11.
+### `is.ie10()`
+Check if the user agent indicates that the device is Internet Explorer 10.
 
-### `is.edge`
-Checks to see if the current device is running Microsoft Edge.
+### `is.ie11()`
+Check if the user agent indicates that the device is Internet Explorer 11.
+
+### `is.edge()`
+Check if the user agent indicates that the device is Microsoft Edge.
