@@ -9,10 +9,12 @@
   "dependencies": {},
   "devDependencies": {
     "@methodgrab/eslint-config-standard": "^0.5.0",
-    "ava": "^0.8.0"
+    "ava": "^0.8.0",
+    "eslint": "^1.10.3"
   },
   "scripts": {
-    "test": "ava"
+    "test": "npm run lint && ava",
+    "lint": "eslint *.js test/*.js"
   },
   "repository": {
     "type": "git",
