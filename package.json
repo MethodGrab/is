@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "files": [
+    "index.js"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@methodgrab/eslint-config-standard": "^0.5.0",
