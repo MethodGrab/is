@@ -21,7 +21,7 @@ is.iOS(); // always `false`
 ```
 
 
-## Common Uses
+## Uses
 
 1. iOS 7 `vh` unit workaround
 

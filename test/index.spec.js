@@ -85,7 +85,7 @@ const tests = [
 
 
 test( 'throws an error when no UA is available', t => {
-	t.throws((  ) => {
+	t.throws( () => {
 		Lib();
 	});
 
