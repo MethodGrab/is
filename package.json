@@ -23,7 +23,11 @@
     "type": "git",
     "url": "git+ssh://git@github.com/MethodGrab/is.git"
   },
-  "keywords": [],
+  "keywords": [
+    "browser",
+    "ua",
+    "detection"
+  ],
   "author": "MethodGrab",
   "license": "MIT",
   "homepage": "https://github.com/MethodGrab/is#readme"
