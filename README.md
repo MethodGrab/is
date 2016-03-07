@@ -7,7 +7,7 @@ Feature detection should be used where possible but sometimes it's not enough.
 
 ### Basic
 ```js
-var is = require( 'is' );
+var is = require( 'is' )();
 
 is.iOS() // `true` on iOS devices, `false` elsewhere
 ```
