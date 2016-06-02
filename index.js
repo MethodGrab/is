@@ -27,7 +27,7 @@ function getUa( userAgent = false ) {
 }
 
 
-// :: () → { major: number, minor: number }
+// :: () → { major: number, minor: number, patch: number }
 // Get the iOS version (major & minor) from a UA.
 // Defaults to -1 for both if the device is not iOS.
 is.getIosVersion = function (  ) {
@@ -35,15 +35,17 @@ is.getIosVersion = function (  ) {
 	let ret = {
 		major : -1,
 		minor : -1,
+		patch : -1,
 	};
 
 	try {
-		const matches = getUa().match( /(?:iPod|iPhone|iPad).*(?:OS) (\d+)_(\d+)\s+/ );
+		const matches = getUa().match( /(?:iPod|iPhone|iPad).*(?:OS) (\d+)_(\d+)_?(\d+)?\s/ );
 
 		if ( matches ) {
 			ret = {
 				major: parseInt( matches[1], 10 ),
 				minor: parseInt( matches[2], 10 ),
+				patch: parseInt( matches[3] || -1, 10 ),
 			};
 		}
 

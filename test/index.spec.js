@@ -16,7 +16,8 @@ const uas = {
 		safari  : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12',
 	},
 	iOS: {
-		safari : 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_0 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13A340 Safari/601.1', // iOS 9
+		safari    : 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_0 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13A340 Safari/601.1', // iOS 9
+		safari704 : 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11B554a Safari/9537.53', // iOS 7.0.4
 	},
 };
 
@@ -84,6 +85,12 @@ const tests = [
 ];
 
 
+const iOSVersionTests = [
+	[ uas.iOS.safari, { major: 9, minor: 0, patch: -1 } ],
+	[ uas.iOS.safari704, { major: 7, minor: 0, patch: 4 } ]
+];
+
+
 test( 'throws an error when no UA is available', t => {
 	t.throws( () => {
 		Lib();
@@ -97,6 +104,15 @@ test( 'matches userAgents correctly', t => {
 	tests.forEach( ([ ua, method, expected ]) => {
 		const lib = Lib( ua );
 		t.is( lib[ method ](), expected, `"${ua}" ${expected ? 'should' : 'should not'} match "is.${method}()"` );
+		t.pass();
+	});
+});
+
+
+test( 'matches iOS versions correctly', t => {
+	iOSVersionTests.forEach( ([ ua, expected ]) => {
+		const lib = Lib( ua );
+		t.deepEqual( lib.getIosVersion(), expected, `"${ua}" ${expected ? 'should' : 'should not'} match "${JSON.stringify( expected )}"` );
 		t.pass();
 	});
 });
