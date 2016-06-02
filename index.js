@@ -1,24 +1,30 @@
 'use strict';
 
-var is;
-var ua;
+let is;
+let ua;
 
 
 // :: ( userAgent: ?string ) → module: object
 // Constructor
-module.exports = is = function ( userAgent ) {
+module.exports = is = function ( userAgent = false ) {
+	ua = getUa( userAgent );
+	return module.exports;
+};
 
+
+// :: ( userAgent: string ) → string
+// Get the current user agent to test against
+function getUa( userAgent = false ) {
 	if ( typeof userAgent === 'string' ) {
-		ua = userAgent;
+		return userAgent;
 	} else if ( typeof navigator === 'object' && navigator.userAgent ) {
-		ua = navigator.userAgent;
-	} else {
-		throw new Error( 'A user agent is required. You must pass one to the constructor or `navigator.userAgent` must exist' );
+		return navigator.userAgent;
+	} else if ( ua ) {
+		return ua;
 	}
 
-	return module.exports;
-
-};
+	throw new Error( 'A user agent is required. You must pass one to the constructor or `navigator.userAgent` must exist' );
+}
 
 
 // :: () → { major: number, minor: number }
@@ -26,13 +32,13 @@ module.exports = is = function ( userAgent ) {
 // Defaults to -1 for both if the device is not iOS.
 is.getIosVersion = function (  ) {
 
-	var ret = {
+	let ret = {
 		major : -1,
 		minor : -1,
 	};
 
 	try {
-		var matches = ua.match( /(?:iPod|iPhone|iPad).*(?:OS) (\d+)_(\d+)\s+/ );
+		const matches = getUa().match( /(?:iPod|iPhone|iPad).*(?:OS) (\d+)_(\d+)\s+/ );
 
 		if ( matches ) {
 			ret = {
@@ -52,7 +58,7 @@ is.getIosVersion = function (  ) {
 
 // :: [ [ methodName: string, regex: string ] ]
 // Shortcut for tests that only require a single regex to be tested
-var regexMethods = [
+const regexMethods = [
 	[ 'iOS', '(iPod|iPhone|iPad)' ],
 	[ 'chrome', 'Chrome' ],
 	[ 'ie9', 'MSIE 9.0' ],
@@ -61,13 +67,13 @@ var regexMethods = [
 	[ 'edge', 'Edge' ],
 ];
 
-regexMethods.forEach(function ( method ) {
-	var re = new RegExp( method[1] );
+regexMethods.forEach( ( method ) => {
+	const re = new RegExp( method[1] );
 
 	// :: () → bool
 	// Does the UA indicate that the device is `method[0]`
 	is[ method[0] ] = function (  ) {
-		return re.test( ua );
+		return re.test( getUa() );
 	};
 });
 
@@ -75,5 +81,5 @@ regexMethods.forEach(function ( method ) {
 // :: () → bool
 // Does the UA indicate that the device is Safari
 is.safari = function (  ) {
-	 return /Safari/.test( ua ) && !is.chrome();
+	return /Safari/.test( getUa() ) && !is.chrome();
 };
