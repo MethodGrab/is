@@ -99,10 +99,39 @@ const iOSVersionTests = [
 ];
 
 
-test( 'throws an error when no UA is available', t => {
+test( 'throws an error when there is no userAgent', t => {
 	t.throws( () => {
-		Lib();
+		const lib = Lib();
+		lib.chrome();
 	});
+
+	t.pass();
+});
+
+
+test( 'accepts a userAgent to the constructor', t => {
+	let lib;
+
+	t.notThrows( () => {
+		lib = Lib( uas.osx.chrome );
+	});
+
+	t.is( lib.chrome(), true );
+
+	t.pass();
+});
+
+
+test( 'accepts a userAgent at run time', t => {
+	let lib;
+
+	t.notThrows( () => {
+		lib = Lib;
+	});
+
+	t.is( lib.chrome( uas.osx.chrome ), true );
+	t.is( lib.safari( uas.osx.safari ), true );
+	t.is( lib.ie( uas.win.ie11 ), true );
 
 	t.pass();
 });

@@ -7,7 +7,7 @@ let ua;
 // :: ( userAgent: ?string ) → module: object
 // Constructor
 module.exports = is = function ( userAgent = false ) {
-	ua = getUa( userAgent );
+	ua = userAgent;
 	return module.exports;
 };
 
@@ -23,14 +23,14 @@ function getUa( userAgent = false ) {
 		return ua;
 	}
 
-	throw new Error( 'A user agent is required. You must pass one to the constructor or `navigator.userAgent` must exist' );
+	throw new Error( 'A user agent is required. You must pass one to the constructor, method or `navigator.userAgent` must exist' );
 }
 
 
 // :: () → { major: number, minor: number, patch: number }
 // Get the iOS version (major & minor) from a UA.
 // Defaults to -1 for both if the device is not iOS.
-is.getIosVersion = function (  ) {
+is.getIosVersion = function ( userAgent = false ) {
 
 	let ret = {
 		major : -1,
@@ -39,7 +39,7 @@ is.getIosVersion = function (  ) {
 	};
 
 	try {
-		const matches = getUa().match( /(?:iPod|iPhone|iPad).*(?:OS) (\d+)_(\d+)_?(\d+)?\s/ );
+		const matches = getUa( userAgent ).match( /(?:iPod|iPhone|iPad).*(?:OS) (\d+)_(\d+)_?(\d+)?\s/ );
 
 		if ( matches ) {
 			ret = {
@@ -74,21 +74,21 @@ regexMethods.forEach( ( method ) => {
 
 	// :: () → bool
 	// Does the UA indicate that the device is `method[0]`
-	is[ method[0] ] = function (  ) {
-		return re.test( getUa() );
+	is[ method[0] ] = function ( userAgent = false ) {
+		return re.test( getUa( userAgent ) );
 	};
 });
 
 
 // :: () → bool
 // Does the UA indicate that the device is Safari
-is.safari = function (  ) {
-	return /Safari/.test( getUa() ) && !is.chrome();
+is.safari = function ( userAgent = false ) {
+	return /Safari/.test( getUa( userAgent ) ) && !is.chrome( userAgent );
 };
 
 
 // :: () → bool
 // Does the UA indicate that the device is IE
-is.ie = function (  ) {
-	return /MSIE/.test( getUa() ) || is.ie11();
+is.ie = function ( userAgent = false ) {
+	return /MSIE/.test( getUa( userAgent ) ) || is.ie11( userAgent );
 };
