@@ -1,36 +1,36 @@
 'use strict';
 
 let is;
-let ua;
+let userAgent;
 
 
-// :: ( userAgent: ?string ) → module: object
+// :: ( ua: ?string ) → module: object
 // Constructor
-module.exports = is = function ( userAgent = false ) {
-	ua = userAgent;
+module.exports = is = function ( ua = false ) {
+	userAgent = ua;
 	return module.exports;
 };
 
 
-// :: ( userAgent: string ) → string
+// :: ( ua: string ) → string
 // Get the current user agent to test against
-function getUa( userAgent = false ) {
-	if ( typeof userAgent === 'string' ) {
-		return userAgent;
+function getUa( ua = false ) {
+	if ( typeof ua === 'string' ) {
+		return ua;
 	} else if ( typeof navigator === 'object' && navigator.userAgent ) {
 		return navigator.userAgent;
-	} else if ( ua ) {
-		return ua;
+	} else if ( userAgent ) {
+		return userAgent;
 	}
 
 	throw new Error( 'A user agent is required. You must pass one to the constructor, method or `navigator.userAgent` must exist' );
 }
 
 
-// :: () → { major: number, minor: number, patch: number }
+// :: ( ua: ?string ) → { major: number, minor: number, patch: number }
 // Get the iOS version (major & minor) from a UA.
 // Defaults to -1 for both if the device is not iOS.
-is.getIosVersion = function ( userAgent = false ) {
+is.getIosVersion = function ( ua = false ) {
 
 	let ret = {
 		major : -1,
@@ -39,7 +39,7 @@ is.getIosVersion = function ( userAgent = false ) {
 	};
 
 	try {
-		const matches = getUa( userAgent ).match( /(?:iPod|iPhone|iPad).*(?:OS) (\d+)_(\d+)_?(\d+)?\s/ );
+		const matches = getUa( ua ).match( /(?:iPod|iPhone|iPad).*(?:OS) (\d+)_(\d+)_?(\d+)?\s/ );
 
 		if ( matches ) {
 			ret = {
@@ -72,23 +72,23 @@ const regexMethods = [
 regexMethods.forEach( ( method ) => {
 	const re = new RegExp( method[1] );
 
-	// :: () → bool
+	// :: ( ua: ?string ) → bool
 	// Does the UA indicate that the device is `method[0]`
-	is[ method[0] ] = function ( userAgent = false ) {
-		return re.test( getUa( userAgent ) );
+	is[ method[0] ] = function ( ua = false ) {
+		return re.test( getUa( ua ) );
 	};
 });
 
 
-// :: () → bool
+// :: ( ua: ?string ) → bool
 // Does the UA indicate that the device is Safari
-is.safari = function ( userAgent = false ) {
-	return /Safari/.test( getUa( userAgent ) ) && !is.chrome( userAgent );
+is.safari = function ( ua = false ) {
+	return /Safari/.test( getUa( ua ) ) && !is.chrome( ua );
 };
 
 
-// :: () → bool
+// :: ( ua: ?string ) → bool
 // Does the UA indicate that the device is IE
-is.ie = function ( userAgent = false ) {
-	return /MSIE/.test( getUa( userAgent ) ) || is.ie11( userAgent );
+is.ie = function ( ua = false ) {
+	return /MSIE/.test( getUa( ua ) ) || is.ie11( ua );
 };
