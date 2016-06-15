@@ -49,7 +49,11 @@ if ( is.iOS() && is.getIosVersion().major < 8 ) {
 ## API
 
 ### `is.getIosVersion()`
-Returns the major & minor versions of iOS.
+Returns an `object` with the `major`, `minor` & `patch` versions of iOS.  
+The values for each will be `-1` if undefined or not iOS.  
+Example: iOS 9.3.2 → `{ major: 9, minor: 3, patch: 2 }`  
+Example: iOS 9.0 → `{ major: 9, minor: 0, patch: -1 }`  
+Example: OS X → `{ major: -1, minor: -1, patch: -1 }`  
 
 ### `is.iOS()`
 Check if the user agent indicates that the device is iOS.
@@ -59,6 +63,9 @@ Check if the user agent indicates that the device is Safari.
 
 ### `is.chrome()`
 Check if the user agent indicates that the device is Chrome.
+
+### `is.ie()`
+Check if the user agent indicates that the device is Internet Explorer.
 
 ### `is.ie9()`
 Check if the user agent indicates that the device is Internet Explorer 9.

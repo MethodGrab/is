@@ -27,6 +27,7 @@ const tests = [
 	// Win
 	[ uas.win.edge, 'iOS', false ],
 	[ uas.win.edge, 'safari', false ],
+	[ uas.win.edge, 'ie', false ],
 	[ uas.win.edge, 'ie9', false ],
 	[ uas.win.edge, 'ie10', false ],
 	[ uas.win.edge, 'ie11', false ],
@@ -34,6 +35,7 @@ const tests = [
 
 	[ uas.win.ie11, 'iOS', false ],
 	[ uas.win.ie11, 'safari', false ],
+	[ uas.win.ie11, 'ie', true ],
 	[ uas.win.ie11, 'ie9', false ],
 	[ uas.win.ie11, 'ie10', false ],
 	[ uas.win.ie11, 'ie11', true ],
@@ -41,6 +43,7 @@ const tests = [
 
 	[ uas.win.ie10, 'iOS', false ],
 	[ uas.win.ie10, 'safari', false ],
+	[ uas.win.ie10, 'ie', true ],
 	[ uas.win.ie10, 'ie9', false ],
 	[ uas.win.ie10, 'ie10', true ],
 	[ uas.win.ie10, 'ie11', false ],
@@ -48,6 +51,7 @@ const tests = [
 
 	[ uas.win.ie9, 'iOS', false ],
 	[ uas.win.ie9, 'safari', false ],
+	[ uas.win.ie9, 'ie', true ],
 	[ uas.win.ie9, 'ie9', true ],
 	[ uas.win.ie9, 'ie10', false ],
 	[ uas.win.ie9, 'ie11', false ],
@@ -56,6 +60,7 @@ const tests = [
 	// OS X
 	[ uas.osx.chrome, 'iOS', false ],
 	[ uas.osx.chrome, 'safari', false ],
+	[ uas.osx.chrome, 'ie', false ],
 	[ uas.osx.chrome, 'ie9', false ],
 	[ uas.osx.chrome, 'ie10', false ],
 	[ uas.osx.chrome, 'ie11', false ],
@@ -63,6 +68,7 @@ const tests = [
 
 	[ uas.osx.firefox, 'iOS', false ],
 	[ uas.osx.firefox, 'safari', false ],
+	[ uas.osx.firefox, 'ie', false ],
 	[ uas.osx.firefox, 'ie9', false ],
 	[ uas.osx.firefox, 'ie10', false ],
 	[ uas.osx.firefox, 'ie11', false ],
@@ -70,6 +76,7 @@ const tests = [
 
 	[ uas.osx.safari, 'iOS', false ],
 	[ uas.osx.safari, 'safari', true ],
+	[ uas.osx.safari, 'ie', false ],
 	[ uas.osx.safari, 'ie9', false ],
 	[ uas.osx.safari, 'ie10', false ],
 	[ uas.osx.safari, 'ie11', false ],
@@ -78,6 +85,7 @@ const tests = [
 	// iOS
 	[ uas.iOS.safari, 'iOS', true ],
 	[ uas.iOS.safari, 'safari', true ],
+	[ uas.iOS.safari, 'ie', false ],
 	[ uas.iOS.safari, 'ie9', false ],
 	[ uas.iOS.safari, 'ie10', false ],
 	[ uas.iOS.safari, 'ie11', false ],

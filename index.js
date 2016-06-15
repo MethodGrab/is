@@ -85,3 +85,10 @@ regexMethods.forEach( ( method ) => {
 is.safari = function (  ) {
 	return /Safari/.test( getUa() ) && !is.chrome();
 };
+
+
+// :: () → bool
+// Does the UA indicate that the device is IE
+is.ie = function (  ) {
+	return /MSIE/.test( getUa() ) || is.ie11();
+};
