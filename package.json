@@ -2,33 +2,24 @@
   "name": "@methodgrab/is",
   "version": "0.1.0",
   "description": "UA detection",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "files": [
-    "index.js"
-  ],
-  "dependencies": {},
-  "devDependencies": {
-    "@methodgrab/eslint-config-standard": "^0.8.0",
-    "ava": "^0.15.1",
-    "eslint": "^2.2.0"
-  },
-  "scripts": {
-    "test": "npm run lint && ava",
-    "lint": "eslint *.js test/*.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/MethodGrab/is.git"
-  },
+  "license": "MIT",
+  "repository": "MethodGrab/is",
+  "author": "MethodGrab",
   "keywords": [
     "browser",
     "ua",
     "detection"
   ],
-  "author": "MethodGrab",
-  "license": "MIT",
-  "homepage": "https://github.com/MethodGrab/is#readme"
+  "scripts": {
+    "test": "npm run lint && ava",
+    "lint": "eslint *.js test/*.js"
+  },
+  "main": "index.js",
+  "files": [ "index.js" ],
+  "dependencies": {},
+  "devDependencies": {
+    "@methodgrab/eslint-config-standard": "^0.8.0",
+    "ava": "^0.15.1",
+    "eslint": "^2.2.0"
+  }
 }
