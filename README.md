@@ -7,42 +7,36 @@ Feature detection should be used where possible but sometimes it's not enough.
 
 ### Basic
 ```js
-var is = require( 'is' )();
+const is = require( 'is' );
 
-is.ios(); // `true` on iOS devices, `false` elsewhere
+is.ios();
+// No UA specified, `navigator.userAgent` is used if possible
+// → `true` on iOS devices, `false` elsewhere
 ```
 
-### Custom UA
+### Custom User Agent
 You can pass a custom user agent when initializing the library:
 
 ```js
-var is = require( 'is' )( 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36' );
-is.ios(); // always `false`
+const is = require( 'is' )( 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36' );
+
+is.chrome();
+// → always `true`
+
+is.ios();
+// → always `false`
 ```
 
-
-## Uses
-
-1. iOS 7 `vh` unit workaround
+Or at run time:
 
 ```js
-function iosVhFix(  ) {
-	$( '.js-fix-vh' ).each( function ( idx, el ) {
-		var height = $( el ).height();
-		$( el ).css( 'min-height', height );
-	});
-}
+const is = require( 'is' );
 
-// vh units are buggy in iOS <8 so require a JavaScript workaround
-// https://github.com/scottjehl/Device-Bugs/issues/36
-if ( is.ios() && is.iosVersion().major < 8 ) {
-	// either use fallback CSS
-	$( 'html' ).addClass( 'no-vhunits' );
+is.chrome( 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36' );
+// → always `true`
 
-	// or use JS to calculate the min-height
-	iosVhFix();
-	$( window ).bind( 'resize', iosVhFix );
-}
+is.ios( 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36' );
+// → always `false`
 ```
 
 
