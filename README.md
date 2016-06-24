@@ -1,6 +1,9 @@
-# is.js
-UA detection.
-Feature detection should be used where possible but sometimes it's not enough.
+# is
+> Browser detection from a user agent string.
+
+
+## Why
+Feature detection is preferable but sometimes it's not enough to deal with device specific quirks.
 
 
 ## Usage
@@ -43,8 +46,9 @@ is.ios( 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHT
 ## API
 
 ### `is.iosVersion()`
-Returns an `object` with the `major`, `minor` & `patch` versions of iOS.  
+Get the `major`, `minor` & `patch` versions of iOS.  
 The values for each will be `-1` if undefined or not iOS.  
+
 Example: iOS 9.3.2 → `{ major: 9, minor: 3, patch: 2 }`  
 Example: iOS 9.0 → `{ major: 9, minor: 0, patch: -1 }`  
 Example: OS X → `{ major: -1, minor: -1, patch: -1 }`  

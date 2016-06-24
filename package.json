@@ -1,12 +1,14 @@
 {
   "name": "@methodgrab/is",
   "version": "0.1.0",
-  "description": "UA detection",
+  "description": "Browser detection from a user agent string",
   "license": "MIT",
   "repository": "MethodGrab/is",
   "author": "MethodGrab",
   "keywords": [
     "browser",
+    "user agent",
+    "useragent",
     "ua",
     "detection"
   ],
