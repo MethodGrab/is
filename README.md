@@ -1,4 +1,4 @@
-# is
+# is [![Build Status](https://travis-ci.org/MethodGrab/is.svg?branch=master)](https://travis-ci.org/MethodGrab/is)
 > Browser detection from a user agent string.
 
 
