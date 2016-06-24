@@ -9,7 +9,7 @@ Feature detection should be used where possible but sometimes it's not enough.
 ```js
 var is = require( 'is' )();
 
-is.iOS() // `true` on iOS devices, `false` elsewhere
+is.ios(); // `true` on iOS devices, `false` elsewhere
 ```
 
 ### Custom UA
@@ -17,7 +17,7 @@ You can pass a custom user agent when initializing the library:
 
 ```js
 var is = require( 'is' )( 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36' );
-is.iOS(); // always `false`
+is.ios(); // always `false`
 ```
 
 
@@ -35,7 +35,7 @@ function iosVhFix(  ) {
 
 // vh units are buggy in iOS <8 so require a JavaScript workaround
 // https://github.com/scottjehl/Device-Bugs/issues/36
-if ( is.iOS() && is.getIosVersion().major < 8 ) {
+if ( is.ios() && is.iosVersion().major < 8 ) {
 	// either use fallback CSS
 	$( 'html' ).addClass( 'no-vhunits' );
 
@@ -48,14 +48,14 @@ if ( is.iOS() && is.getIosVersion().major < 8 ) {
 
 ## API
 
-### `is.getIosVersion()`
+### `is.iosVersion()`
 Returns an `object` with the `major`, `minor` & `patch` versions of iOS.  
 The values for each will be `-1` if undefined or not iOS.  
 Example: iOS 9.3.2 → `{ major: 9, minor: 3, patch: 2 }`  
 Example: iOS 9.0 → `{ major: 9, minor: 0, patch: -1 }`  
 Example: OS X → `{ major: -1, minor: -1, patch: -1 }`  
 
-### `is.iOS()`
+### `is.ios()`
 Check if the user agent indicates that the device is iOS.
 
 ### `is.safari()`

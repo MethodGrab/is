@@ -30,7 +30,7 @@ function getUa( ua = false ) {
 // :: ( ua: ?string ) → { major: number, minor: number, patch: number }
 // Get the iOS version (major & minor) from a UA.
 // Defaults to -1 for both if the device is not iOS.
-is.getIosVersion = function ( ua = false ) {
+is.iosVersion = function ( ua = false ) {
 
 	let ret = {
 		major : -1,
@@ -61,7 +61,7 @@ is.getIosVersion = function ( ua = false ) {
 // :: [ [ methodName: string, regex: string ] ]
 // Shortcut for tests that only require a single regex to be tested
 const regexMethods = [
-	[ 'iOS', '(iPod|iPhone|iPad)' ],
+	[ 'ios', '(iPod|iPhone|iPad)' ],
 	[ 'chrome', 'Chrome' ],
 	[ 'ie9', 'MSIE 9.0' ],
 	[ 'ie10', 'MSIE 10.0' ],
