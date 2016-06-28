@@ -6,11 +6,17 @@
 Feature detection is preferable but sometimes it's not enough to deal with device specific quirks.
 
 
+## Install
+```bash
+npm install --save @methodgrab/is
+```
+
+
 ## Usage
 
 ### Basic
 ```js
-const is = require( 'is' );
+const is = require( '@methodgrab/is' );
 
 is.ios();
 // No UA specified, `navigator.userAgent` is used if possible
@@ -21,7 +27,7 @@ is.ios();
 You can pass a custom user agent when initializing the library:
 
 ```js
-const is = require( 'is' )( 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36' );
+const is = require( '@methodgrab/is' )( 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36' );
 
 is.chrome();
 // → always `true`
@@ -33,7 +39,7 @@ is.ios();
 Or at run time:
 
 ```js
-const is = require( 'is' );
+const is = require( '@methodgrab/is' );
 
 is.chrome( 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36' );
 // → always `true`
