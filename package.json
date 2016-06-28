@@ -15,7 +15,7 @@
   "scripts": {
     "test": "npm run lint && ava",
     "lint": "eslint *.js test/*.js",
-    "build": "browserify index.js -t babelify --outfile dist/is.js"
+    "build": "browserify index.js --standalone is -t babelify --outfile dist/is.js"
   },
   "main": "index.js",
   "files": [
