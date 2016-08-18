@@ -18,6 +18,7 @@
     "build": "browserify index.js --standalone is -t babelify --outfile dist/is.js"
   },
   "main": "index.js",
+  "browser": "dist/is.js",
   "files": [
     "index.js",
     "dist/is.js"
