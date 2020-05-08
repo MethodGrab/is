@@ -1,4 +1,4 @@
-# is [![Build Status](https://travis-ci.org/MethodGrab/is.svg?branch=master)](https://travis-ci.org/MethodGrab/is)
+# is [![Build Status](https://travis-ci.org/MethodGrab/is.svg?branch=master)](https://travis-ci.org/MethodGrab/is) [![npm](https://img.shields.io/npm/v/@methodgrab/is.svg)](https://www.npmjs.com/package/@methodgrab/is)
 > Browser detection from a user agent string.
 
 
