@@ -95,7 +95,7 @@ const tests = [
 
 const iOSVersionTests = [
 	[ uas.ios.safari, { major: 9, minor: 0, patch: -1 } ],
-	[ uas.ios.safari704, { major: 7, minor: 0, patch: 4 } ]
+	[ uas.ios.safari704, { major: 7, minor: 0, patch: 4 } ],
 ];
 
 
